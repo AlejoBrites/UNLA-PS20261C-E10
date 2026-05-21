@@ -59,7 +59,7 @@
 ---
 
 ## US05 — Gestión de sesión (mantener sesión iniciada)
-**Prioridad:** Alta | **SP:** 2 ★ | **Sprint:** 2 | **App:** users
+**Prioridad:** Alta | **SP:** 2 | **Sprint:** 1 | **App:** users
 
 **Descripción:**
 > Como usuario autenticado,
@@ -72,7 +72,23 @@
 
 ---
 
-## US06 — Exploración de listado de juegos
+## US06 — Landing page y catálogo básico
+**Prioridad:** Alta | **SP:** 3 | **Sprint:** 1 | **App:** users / games
+
+**Descripción:**
+> Como visitante del sitio,
+> quiero ver una página de inicio que describa el producto y una grilla de juegos disponibles,
+> para entender qué ofrece la plataforma antes de registrarme.
+
+**Criterios de aceptación:**
+- Dado que accedo a `/` sin sesión iniciada, cuando cargo la página, entonces veo la landing con el nombre del producto, una descripción y botones de "Crear cuenta" e "Iniciar sesión".
+- Dado que accedo a `/` con sesión iniciada, cuando cargo la página, entonces soy redirigido automáticamente a `/games/`.
+- Dado que accedo a `/games/`, cuando cargo la página, entonces veo la grilla de juegos disponibles con imagen (o placeholder), título, categoría y precio.
+- Dado que no hay juegos cargados, cuando accedo a `/games/`, entonces el sistema muestra un mensaje indicando que no hay juegos disponibles.
+
+---
+
+## US07 — Exploración de listado de juegos
 **Prioridad:** Alta | **SP:** 5 | **Sprint:** 2 | **App:** games
 
 **Descripción:**
@@ -86,7 +102,7 @@
 
 ---
 
-## US07 — Búsqueda de juegos por nombre
+## US08 — Búsqueda de juegos por nombre
 **Prioridad:** Media | **SP:** 3 | **Sprint:** 2 | **App:** games
 
 **Descripción:**
@@ -100,7 +116,7 @@
 
 ---
 
-## US08 — Visualización de detalles del juego
+## US09 — Visualización de detalles del juego
 **Prioridad:** Media | **SP:** 3 | **Sprint:** 2 | **App:** games
 
 **Descripción:**
@@ -114,7 +130,7 @@
 
 ---
 
-## US09 — Filtrado por categoría/género
+## US10 — Filtrado por categoría/género
 **Prioridad:** Media | **SP:** 5 | **Sprint:** 3 | **App:** games
 
 **Descripción:**
@@ -128,7 +144,7 @@
 
 ---
 
-## US10 — Agregar juego al carrito
+## US11 — Agregar juego al carrito
 **Prioridad:** Alta | **SP:** 3 ⭐ | **Sprint:** 3 | **App:** cart
 
 > **US Pivote**: referencia base para estimaciones relativas del equipo.
@@ -145,7 +161,7 @@
 
 ---
 
-## US11 — Visualizar carrito
+## US12 — Visualizar carrito
 **Prioridad:** Alta | **SP:** 3 | **Sprint:** 3 | **App:** cart
 
 **Descripción:**
@@ -159,7 +175,7 @@
 
 ---
 
-## US12 — Eliminar juego del carrito
+## US13 — Eliminar juego del carrito
 **Prioridad:** Media | **SP:** 2 | **Sprint:** 3 | **App:** cart
 
 **Descripción:**
@@ -173,7 +189,7 @@
 
 ---
 
-## US13 — Seleccionar método de pago
+## US14 — Seleccionar método de pago
 **Prioridad:** Alta | **SP:** 3 ★ | **Sprint:** 4 | **App:** payments
 
 **Descripción:**
@@ -187,7 +203,7 @@
 
 ---
 
-## US14 — Confirmar compra
+## US15 — Confirmar compra
 **Prioridad:** Alta | **SP:** 5 ★ | **Sprint:** 4 | **App:** payments
 
 **Descripción:**
@@ -201,7 +217,7 @@
 
 ---
 
-## US15 — Visualizar biblioteca de juegos
+## US16 — Visualizar biblioteca de juegos
 **Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 4 | **App:** library
 
 **Descripción:**
@@ -215,7 +231,7 @@
 
 ---
 
-## US16 — Descargar juego
+## US17 — Descargar juego
 **Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 5 | **App:** library
 
 **Descripción:**
@@ -229,7 +245,7 @@
 
 ---
 
-## US17 — Instalar juego
+## US18 — Instalar juego
 **Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 5 | **App:** library
 
 **Descripción:**
@@ -243,7 +259,7 @@
 
 ---
 
-## US18 — Actualizar juego
+## US19 — Actualizar juego
 **Prioridad:** Baja | **SP:** 2 ★ | **Sprint:** 5 | **App:** library
 
 **Descripción:**
