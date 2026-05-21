@@ -59,7 +59,7 @@
 ---
 
 ## US05 — Gestión de sesión (mantener sesión iniciada)
-**Prioridad:** Alta | **SP:** 2 | **Sprint:** 1 | **App:** users
+**Prioridad:** Alta | **SP:** 2 | **Sprint:** 2 | **App:** users
 
 **Descripción:**
 > Como usuario autenticado,
@@ -73,7 +73,7 @@
 ---
 
 ## US06 — Landing page y catálogo básico
-**Prioridad:** Alta | **SP:** 3 | **Sprint:** 1 | **App:** users / games
+**Prioridad:** Alta | **SP:** 3 | **Sprint:** 2 | **App:** users / games
 
 **Descripción:**
 > Como visitante del sitio,
@@ -89,7 +89,7 @@
 ---
 
 ## US07 — Exploración de listado de juegos
-**Prioridad:** Alta | **SP:** 5 | **Sprint:** 2 | **App:** games
+**Prioridad:** Alta | **SP:** 5 | **Sprint:**  | **App:** games
 
 **Descripción:**
 > Como usuario con sesión iniciada,
@@ -103,7 +103,7 @@
 ---
 
 ## US08 — Búsqueda de juegos por nombre
-**Prioridad:** Media | **SP:** 3 | **Sprint:** 2 | **App:** games
+**Prioridad:** Media | **SP:** 3 | **Sprint:**  | **App:** games
 
 **Descripción:**
 > Como usuario,
@@ -117,7 +117,7 @@
 ---
 
 ## US09 — Visualización de detalles del juego
-**Prioridad:** Media | **SP:** 3 | **Sprint:** 2 | **App:** games
+**Prioridad:** Media | **SP:** 3 | **Sprint:**  | **App:** games
 
 **Descripción:**
 > Como usuario,
@@ -131,7 +131,7 @@
 ---
 
 ## US10 — Filtrado por categoría/género
-**Prioridad:** Media | **SP:** 5 | **Sprint:** 3 | **App:** games
+**Prioridad:** Media | **SP:** 5 | **Sprint:**  | **App:** games
 
 **Descripción:**
 > Como usuario con sesión iniciada,
@@ -145,7 +145,7 @@
 ---
 
 ## US11 — Agregar juego al carrito
-**Prioridad:** Alta | **SP:** 3 ⭐ | **Sprint:** 3 | **App:** cart
+**Prioridad:** Alta | **SP:** 3 ⭐ | **Sprint:** 2 | **App:** cart
 
 > **US Pivote**: referencia base para estimaciones relativas del equipo.
 
@@ -162,7 +162,7 @@
 ---
 
 ## US12 — Visualizar carrito
-**Prioridad:** Alta | **SP:** 3 | **Sprint:** 3 | **App:** cart
+**Prioridad:** Alta | **SP:** 3 | **Sprint:**  | **App:** cart
 
 **Descripción:**
 > Como usuario en proceso de compra,
@@ -176,7 +176,7 @@
 ---
 
 ## US13 — Eliminar juego del carrito
-**Prioridad:** Media | **SP:** 2 | **Sprint:** 3 | **App:** cart
+**Prioridad:** Media | **SP:** 2 | **Sprint:**  | **App:** cart
 
 **Descripción:**
 > Como usuario con carrito,
@@ -190,7 +190,7 @@
 ---
 
 ## US14 — Seleccionar método de pago
-**Prioridad:** Alta | **SP:** 3 ★ | **Sprint:** 4 | **App:** payments
+**Prioridad:** Alta | **SP:** 3 ★ | **Sprint:** 2 | **App:** payments
 
 **Descripción:**
 > Como usuario con ítems en el carrito,
@@ -204,7 +204,7 @@
 ---
 
 ## US15 — Confirmar compra
-**Prioridad:** Alta | **SP:** 5 ★ | **Sprint:** 4 | **App:** payments
+**Prioridad:** Alta | **SP:** 5 ★ | **Sprint:** 2 | **App:** payments
 
 **Descripción:**
 > Como usuario con saldo suficiente,
@@ -218,7 +218,7 @@
 ---
 
 ## US16 — Visualizar biblioteca de juegos
-**Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 4 | **App:** library
+**Prioridad:** Media | **SP:** 3 ★ | **Sprint:** | **App:** library
 
 **Descripción:**
 > Como usuario,
@@ -232,7 +232,7 @@
 ---
 
 ## US17 — Descargar juego
-**Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 5 | **App:** library
+**Prioridad:** Media | **SP:** 3 ★ | **Sprint:**  | **App:** library
 
 **Descripción:**
 > Como usuario con sesión iniciada,
@@ -246,7 +246,7 @@
 ---
 
 ## US18 — Instalar juego
-**Prioridad:** Media | **SP:** 3 ★ | **Sprint:** 5 | **App:** library
+**Prioridad:** Media | **SP:** 3 ★ | **Sprint:**  | **App:** library
 
 **Descripción:**
 > Como usuario con juego descargado,
@@ -260,7 +260,7 @@
 ---
 
 ## US19 — Actualizar juego
-**Prioridad:** Baja | **SP:** 2 ★ | **Sprint:** 5 | **App:** library
+**Prioridad:** Baja | **SP:** 2 ★ | **Sprint:**  | **App:** library
 
 **Descripción:**
 > Como usuario con juegos descargados,
