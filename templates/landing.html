@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}SteamWeb — Tu tienda de juegos digitales{% endblock %}
+
+{% block content %}
+<div class="text-center py-5 mt-3">
+    <i class="bi bi-controller display-1 text-primary mb-4 d-block"></i>
+    <h1 class="display-5 fw-bold mb-3">Bienvenido a SteamWeb</h1>
+    <p class="lead text-secondary mb-5">
+        Tu tienda de videojuegos digitales.<br>
+        Explorá el catálogo, comprá con saldo y jugá desde tu biblioteca.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="{% url 'users:register' %}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-person-plus me-2"></i>Crear cuenta gratis
+        </a>
+        <a href="{% url 'users:login' %}" class="btn btn-outline-light btn-lg px-4">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+        </a>
+    </div>
+</div>
+
+<hr class="border-secondary my-5">
+
+<div class="row text-center g-4 pb-4">
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="bi bi-shop fs-1 text-primary mb-3 d-block"></i>
+            <h5 class="fw-bold">Explorá el catálogo</h5>
+            <p class="text-secondary">Títulos de todos los géneros: acción, RPG, estrategia, deportes y más.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="bi bi-wallet2 fs-1 text-success mb-3 d-block"></i>
+            <h5 class="fw-bold">Pagá con tu saldo</h5>
+            <p class="text-secondary">Cargá tu billetera virtual y comprá con un clic, sin fricciones.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="bi bi-collection fs-1 text-info mb-3 d-block"></i>
+            <h5 class="fw-bold">Tu biblioteca personal</h5>
+            <p class="text-secondary">Todos tus juegos siempre disponibles, listos para descargar e instalar.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
