@@ -5,6 +5,12 @@ from django.contrib import messages
 from .forms import RegisterForm, LoginForm
 
 
+def landing(request):
+    if request.user.is_authenticated:
+        return redirect('games:catalog')
+    return render(request, 'landing.html')
+
+
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)

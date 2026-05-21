@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
+from apps.users.views import landing
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,8 +11,7 @@ urlpatterns = [
     path('cart/', include('apps.cart.urls')),
     path('payments/', include('apps.payments.urls')),
     path('library/', include('apps.library.urls')),
-    # Redirigir la raíz al catálogo de juegos
-    path('', RedirectView.as_view(pattern_name='games:catalog'), name='home'),
+    path('', landing, name='home'),
 ]
 
 # Servir archivos de medios solo en desarrollo

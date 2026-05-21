@@ -13,15 +13,30 @@ El proyecto es desarrollado en equipo siguiendo metodologías ágiles (Scrum), c
 
 ---
 
+## Estado del proyecto
+
+| Fase | Módulo | Responsable | Estado |
+|------|--------|-------------|--------|
+| 1 | Setup + Auth + Landing + Catálogo básico | Integrante 1 | ✅ Completada |
+| 2 | Catálogo completo (búsqueda, filtros, detalle) | Integrante 2 | 🔄 Pendiente |
+| 3 | Carrito de compras | Integrante 3 | 🔄 Pendiente |
+| 4 | Checkout y pagos simulados | Integrante 4 | 🔄 Pendiente |
+| 5 | Biblioteca personal | Integrante 5 | 🔄 Pendiente |
+| 6 | Integración, testing y polish | Integrante 1 | 🔄 Pendiente |
+
+---
+
 ## Funcionalidades principales
 
-| Módulo         | Funcionalidades                                                                 |
-|----------------|---------------------------------------------------------------------------------|
-| **Usuarios**   | Registro con email/teléfono, validación, inicio de sesión, gestión de sesión    |
-| **Juegos**     | Catálogo con búsqueda por nombre, filtrado por categoría, detalle de juego       |
-| **Carrito**    | Agregar/eliminar juegos, visualizar carrito con total                            |
-| **Pagos**      | Checkout con saldo en cuenta, confirmación/rechazo según balance disponible      |
-| **Biblioteca** | Ver juegos adquiridos, descargar, instalar y actualizar (simulado)               |
+| Módulo         | Funcionalidades                                                                 | Estado |
+|----------------|---------------------------------------------------------------------------------|--------|
+| **Usuarios**   | Registro con email/teléfono, inicio de sesión, perfil, gestión de sesión        | ✅ Hecho |
+| **Landing**    | Página de inicio con descripción del producto y CTAs de registro/login          | ✅ Hecho |
+| **Juegos**     | Grilla básica de juegos disponibles                                             | ✅ Hecho |
+| **Juegos**     | Búsqueda por nombre, filtrado por categoría, detalle de juego                   | 🔄 Fase 2 |
+| **Carrito**    | Agregar/eliminar juegos, visualizar carrito con total                           | 🔄 Fase 3 |
+| **Pagos**      | Checkout con saldo en cuenta, confirmación/rechazo según balance disponible     | 🔄 Fase 4 |
+| **Biblioteca** | Ver juegos adquiridos, descargar, instalar y actualizar (simulado)              | 🔄 Fase 5 |
 
 ---
 
@@ -69,7 +84,7 @@ requirements.txt
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/UNLA-PS20261C-E10.git
+git clone https://github.com/AlejoBrites/UNLA-PS20261C-E10.git
 cd UNLA-PS20261C-E10
 
 # 2. Crear y activar entorno virtual
@@ -104,7 +119,8 @@ python manage.py runserver
 ```
 
 Accedé a:
-- **Tienda**: http://127.0.0.1:8000/
+- **Inicio**: http://127.0.0.1:8000/
+- **Tienda**: http://127.0.0.1:8000/games/
 - **Admin**: http://127.0.0.1:8000/admin/
 
 > Para agregar juegos de prueba, usá el panel de administración (`/admin/`).
@@ -112,15 +128,92 @@ Accedé a:
 
 ---
 
+## Fase 1 — Pruebas manuales
+
+> Sprint 1 completado: US01–US06 (registro, validación, contraseña, login, sesión, landing y catálogo básico).
+
+### Credenciales de desarrollo
+
+```
+Superusuario: admin / admin1234
+Usuario demo: demo  / demo1234  (saldo: $200.00)
+```
+
+Panel de administración: http://127.0.0.1:8000/admin/
+
+---
+
+### URLs disponibles
+
+| URL | Descripción |
+|-----|-------------|
+| `http://127.0.0.1:8000/` | Landing page (sin sesión) o redirect a `/games/` (con sesión) |
+| `/games/` | Grilla de juegos disponibles |
+| `/users/register/` | Formulario de registro |
+| `/users/login/` | Formulario de inicio de sesión |
+| `/users/logout/` | Cierra sesión y redirige al login |
+| `/users/profile/` | Perfil del usuario autenticado |
+| `/admin/` | Panel de administración |
+
+---
+
+### Casos de prueba manuales
+
+#### Landing page (`/`)
+- **Sin sesión**: muestra la landing con nombre del producto, descripción y botones "Crear cuenta" / "Iniciar sesión".
+- **Con sesión activa**: redirige automáticamente a `/games/`.
+
+#### Catálogo básico (`/games/`)
+- **Con juegos cargados**: muestra grilla con imagen (o placeholder), título, categoría y precio.
+- **Sin juegos**: muestra mensaje "No hay juegos disponibles por el momento."
+
+#### Registro (`/users/register/`)
+- **Registro exitoso**: completar todos los campos con datos válidos → redirige al catálogo y queda logueado automáticamente.
+- **Contraseñas no coinciden**: `password1` ≠ `password2` → permanece en el formulario con mensaje de error.
+- **Usuario duplicado**: intentar registrar un `username` ya existente → error en el formulario.
+- **Nuevo usuario tiene saldo 0**: verificable desde Admin → Usuarios.
+
+#### Login (`/users/login/`)
+- **Login exitoso**: credenciales correctas → redirige al catálogo (`/games/`).
+- **Contraseña incorrecta**: permanece en la página de login.
+- **Usuario inexistente**: permanece en la página de login.
+- **Ya autenticado**: acceder a `/users/login/` estando logueado → redirige al catálogo.
+
+#### Perfil (`/users/profile/`)
+- **Sin autenticación**: acceder sin estar logueado → redirige a `/users/login/?next=/users/profile/`.
+- **Con autenticación**: muestra nombre de usuario y saldo con formato local (`75,50` en lugar de `75.50`).
+
+#### Logout (`/users/logout/`)
+- Cerrar sesión → redirige a `/users/login/`.
+- Intentar acceder a `/users/profile/` después → redirige al login.
+
+---
+
+### Tests automatizados
+
+```bash
+python manage.py test apps.users
+```
+
+Resultado esperado: **17 tests, 0 errores**.
+
+```
+Ran 17 tests in X.XXXs
+
+OK
+```
+
+---
+
 ## Equipo
 
-| Rol          | App responsable   |
-|--------------|-------------------|
-| Integrante 1 | `apps/users`      |
-| Integrante 2 | `apps/games`      |
-| Integrante 3 | `apps/cart`       |
-| Integrante 4 | `apps/payments`   |
-| Integrante 5 | `apps/library`    |
+| Rol          | App responsable   | Branch                      |
+|--------------|-------------------|-----------------------------|
+| Integrante 1 | `apps/users`      | `feature/users-auth`        |
+| Integrante 2 | `apps/games`      | `feature/games-catalog`     |
+| Integrante 3 | `apps/cart`       | `feature/cart-management`   |
+| Integrante 4 | `apps/payments`   | `feature/payments-checkout` |
+| Integrante 5 | `apps/library`    | `feature/library-download`  |
 
 ---
 
