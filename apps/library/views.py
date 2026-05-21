@@ -1,33 +1,15 @@
-from django.shortcuts import render, get_object_or_404, redirect
+# TODO Fase 5 — Integrante 5: Biblioteca personal
+# Branch: feature/library-download
+# Ver criterios de aceptación en el issue #2.
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .models import LibraryEntry
+from django.http import HttpResponse
 
 
 @login_required
 def library(request):
-    entries = LibraryEntry.objects.filter(user=request.user).select_related('game')
-    return render(request, 'library/library.html', {'entries': entries})
+    return HttpResponse("TODO Fase 5: implementar biblioteca personal.")
 
 
 @login_required
 def update_status(request, entry_id):
-    if request.method != 'POST':
-        return redirect('library:library')
-
-    entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
-    action = request.POST.get('action')
-
-    # Transiciones de estado válidas según la acción
-    transitions = {
-        'download': LibraryEntry.STATUS_DOWNLOADING,
-        'install': LibraryEntry.STATUS_INSTALLED,
-        'update': LibraryEntry.STATUS_INSTALLED,
-    }
-
-    if action in transitions:
-        entry.status = transitions[action]
-        entry.save(update_fields=['status'])
-        messages.success(request, f'Estado de "{entry.game.title}" actualizado.')
-
-    return redirect('library:library')
+    return HttpResponse("TODO Fase 5: implementar actualización de estado.")
