@@ -112,6 +112,73 @@ Accedé a:
 
 ---
 
+## Cómo probar la Fase 1 (autenticación de usuarios)
+
+> Sprint 1 completado: US01–US04 (registro, validación, contraseña, inicio de sesión).
+
+### Credenciales del superusuario de desarrollo
+
+```
+Usuario: admin
+Contraseña: admin1234
+```
+
+Accedé al panel de administración en: http://127.0.0.1:8000/admin/
+
+---
+
+### URLs de la app `users`
+
+| URL                           | Descripción                                  |
+|-------------------------------|----------------------------------------------|
+| `http://127.0.0.1:8000/`      | Redirige automáticamente al catálogo         |
+| `/users/register/`            | Formulario de registro de nuevo usuario      |
+| `/users/login/`               | Formulario de inicio de sesión               |
+| `/users/logout/`              | Cierra sesión y redirige al login            |
+| `/users/profile/`             | Perfil del usuario autenticado               |
+
+---
+
+### Casos de prueba manuales
+
+#### Registro (`/users/register/`)
+- **Registro exitoso**: completar todos los campos con datos válidos → redirige al catálogo y queda logueado automáticamente.
+- **Contraseñas no coinciden**: `password1` ≠ `password2` → permanece en el formulario con mensaje de error.
+- **Usuario duplicado**: intentar registrar un `username` ya existente → error en el formulario.
+- **Nuevo usuario tiene saldo 0**: verificable desde Admin → Usuarios.
+
+#### Login (`/users/login/`)
+- **Login exitoso**: credenciales correctas → redirige al catálogo (`/games/`).
+- **Contraseña incorrecta**: permanece en la página de login.
+- **Usuario inexistente**: permanece en la página de login.
+- **Ya autenticado**: acceder a `/users/login/` estando logueado → redirige al catálogo.
+
+#### Perfil (`/users/profile/`)
+- **Sin autenticación**: acceder a `/users/profile/` sin estar logueado → redirige a `/users/login/?next=/users/profile/`.
+- **Con autenticación**: muestra nombre de usuario y saldo con formato local (`75,50` en lugar de `75.50`).
+
+#### Logout (`/users/logout/`)
+- Acceder a `/users/logout/` → cierra sesión y redirige a `/users/login/`.
+- Intentar acceder a `/users/profile/` después → redirige al login.
+
+---
+
+### Correr los tests automatizados
+
+```bash
+python manage.py test apps.users
+```
+
+Debería mostrar **17 tests, 0 errores**:
+
+```
+Ran 17 tests in X.XXXs
+
+OK
+```
+
+---
+
 ## Equipo
 
 | Rol          | App responsable   |
