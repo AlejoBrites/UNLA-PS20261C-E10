@@ -2,14 +2,17 @@
 # Branch: feature/library-download
 # Ver criterios de aceptación en el issue #2.
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-
-
+from django.shortcuts import render
+from apps.cart.models import CartItem
+ 
+ 
 @login_required
 def library(request):
-    return HttpResponse("TODO Fase 5: implementar biblioteca personal.")
-
-
-@login_required
-def update_status(request, entry_id):
-    return HttpResponse("TODO Fase 5: implementar actualización de estado.")
+    # Obtenemos todos los juegos comprados por el usuario a través del carrito
+    purchased_items = CartItem.objects.filter(
+        cart__user=request.user
+    ).select_related('game', 'game__category')
+ 
+    games = [item.game for item in purchased_items]
+ 
+    return render(request, 'library/library.html', {'games': games})
