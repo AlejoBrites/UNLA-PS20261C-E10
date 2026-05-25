@@ -51,13 +51,3 @@ Una User Story se considera **terminada** cuando cumple **todos** estos criterio
 
 ---
 
-## Resumen por sprint
-
-| Sprint   | US incluidas          | Story Points | Estado       |
-|----------|-----------------------|--------------|--------------|
-| Sprint 1 | US01–US06             | 19 SP       | ✅ Completado |
-| Sprint 2 | US07–US09             | 11 SP       | 🔄 Pendiente  |
-| Sprint 3 | US10–US13             | 13 SP       | 🔄 Pendiente  |
-| Sprint 4 | US14–US16             | 11 SP       | 🔄 Pendiente  |
-| Sprint 5 | US17–US19             | 8 SP        | 🔄 Pendiente  |
-| **Total**|                       | **62 SP**   |              |
