@@ -3,16 +3,16 @@
 # Ver criterios de aceptación en el issue #2.
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from apps.cart.models import CartItem
+from apps.library.models import LibraryEntry
  
  
 @login_required
 def library(request):
-    # Obtenemos todos los juegos comprados por el usuario a través del carrito
-    purchased_items = CartItem.objects.filter(
-        cart__user=request.user
+    # Obtenemos todos los juegos comprados por el usuario a través de la biblioteca
+    library_entries = LibraryEntry.objects.filter(
+        user=request.user
     ).select_related('game', 'game__category')
  
-    games = [item.game for item in purchased_items]
+    games = [entry.game for entry in library_entries]
  
     return render(request, 'library/library.html', {'games': games})
