@@ -73,7 +73,7 @@
 ---
 
 ## US06 — Landing page y catálogo básico
-**Prioridad:** Alta | **SP:** 5 | **Sprint:** 2 | **App:** users / games
+**Prioridad:** Alta | **SP:** 5 | **Sprint:** 1 | **App:** users / games
 
 **Descripción:**
 > Como visitante del sitio,

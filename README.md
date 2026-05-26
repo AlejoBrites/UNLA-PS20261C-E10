@@ -18,10 +18,10 @@ El proyecto es desarrollado en equipo siguiendo metodologías ágiles (Scrum), c
 | Fase | Módulo | Responsable | Estado |
 |------|--------|-------------|--------|
 | 1 | Setup + Auth + Landing + Catálogo básico | Integrante 1 | ✅ Completada |
-| 2 | Catálogo completo (búsqueda, filtros, detalle) | Integrante 2 | 🔄 Pendiente |
-| 3 | Carrito de compras | Integrante 3 | 🔄 Pendiente |
-| 4 | Checkout y pagos simulados | Integrante 4 | 🔄 Pendiente |
-| 5 | Biblioteca personal | Integrante 5 | 🔄 Pendiente |
+| 2 | Catálogo completo (detalle ✅ — búsqueda y filtros pendientes) | Integrante 2 | 🟡 En progreso |
+| 3 | Carrito de compras | Integrante 3 | ✅ Completada |
+| 4 | Checkout y pagos simulados | Integrante 4 | ✅ Completada |
+| 5 | Biblioteca personal (vista ✅ — descarga/instalación pendientes) | Integrante 5 | 🟡 En progreso |
 | 6 | Integración, testing y polish | Integrante 1 | 🔄 Pendiente |
 
 ---
@@ -32,11 +32,13 @@ El proyecto es desarrollado en equipo siguiendo metodologías ágiles (Scrum), c
 |----------------|---------------------------------------------------------------------------------|--------|
 | **Usuarios**   | Registro con email/teléfono, inicio de sesión, perfil, gestión de sesión        | ✅ Hecho |
 | **Landing**    | Página de inicio con descripción del producto y CTAs de registro/login          | ✅ Hecho |
-| **Juegos**     | Grilla básica de juegos disponibles                                             | ✅ Hecho |
-| **Juegos**     | Búsqueda por nombre, filtrado por categoría, detalle de juego                   | 🔄 Fase 2 |
-| **Carrito**    | Agregar/eliminar juegos, visualizar carrito con total                           | 🔄 Fase 3 |
-| **Pagos**      | Checkout con saldo en cuenta, confirmación/rechazo según balance disponible     | 🔄 Fase 4 |
-| **Biblioteca** | Ver juegos adquiridos, descargar, instalar y actualizar (simulado)              | 🔄 Fase 5 |
+| **Juegos**     | Grilla de juegos disponibles con imagen, categoría y precio                     | ✅ Hecho |
+| **Juegos**     | Página de detalle con descripción, desarrollador y botón de compra              | ✅ Hecho |
+| **Juegos**     | Búsqueda por nombre y filtrado por categoría                                    | 🔄 Sprint 3 |
+| **Carrito**    | Agregar/eliminar juegos, visualizar carrito con total, validación de duplicados  | ✅ Hecho |
+| **Pagos**      | Checkout con saldo en cuenta, confirmación/rechazo según balance disponible     | ✅ Hecho |
+| **Biblioteca** | Ver juegos adquiridos tras la compra                                            | ✅ Hecho |
+| **Biblioteca** | Descargar, instalar y actualizar juegos (simulado)                              | 🔄 Sprint 3 |
 
 ---
 
@@ -128,9 +130,10 @@ Accedé a:
 
 ---
 
-## Fase 1 — Pruebas manuales
+## Pruebas manuales — Sprint 1 y Sprint 2
 
 > Sprint 1 completado: US01–US06 (registro, validación, contraseña, login, sesión, landing y catálogo básico).
+> Sprint 2 completado: US07, US09, US11–US16 (catálogo completo, detalle, carrito, pagos, biblioteca).
 
 ### Credenciales de desarrollo
 
@@ -141,14 +144,24 @@ Usuario demo: demo  / demo1234  (saldo: $200.00)
 
 Panel de administración: http://127.0.0.1:8000/admin/
 
+> Para probar el flujo de compra, asigná saldo a un usuario desde Admin → Usuarios → editar → campo "saldo".
+> Agregá juegos de prueba desde Admin → Juegos.
+
 ---
 
 ### URLs disponibles
 
 | URL | Descripción |
 |-----|-------------|
-| `http://127.0.0.1:8000/` | Landing page (sin sesión) o redirect a `/games/` (con sesión) |
-| `/games/` | Grilla de juegos disponibles |
+| `/` | Landing page (sin sesión) o redirect a `/games/` (con sesión) |
+| `/games/` | Catálogo de juegos disponibles |
+| `/games/<slug>/` | Detalle de un juego |
+| `/cart/` | Carrito de compras |
+| `/cart/add/<id>/` | Agregar juego al carrito |
+| `/cart/remove/<id>/` | Eliminar juego del carrito |
+| `/payments/checkout/` | Revisión de compra y selección de pago |
+| `/payments/confirm/` | Confirmar y procesar el pago |
+| `/library/` | Biblioteca personal del usuario |
 | `/users/register/` | Formulario de registro |
 | `/users/login/` | Formulario de inicio de sesión |
 | `/users/logout/` | Cierra sesión y redirige al login |
@@ -163,29 +176,53 @@ Panel de administración: http://127.0.0.1:8000/admin/
 - **Sin sesión**: muestra la landing con nombre del producto, descripción y botones "Crear cuenta" / "Iniciar sesión".
 - **Con sesión activa**: redirige automáticamente a `/games/`.
 
-#### Catálogo básico (`/games/`)
+#### Catálogo (`/games/`)
 - **Con juegos cargados**: muestra grilla con imagen (o placeholder), título, categoría y precio.
 - **Sin juegos**: muestra mensaje "No hay juegos disponibles por el momento."
+- **Sin sesión**: el botón de agregar muestra candado y redirige al login.
+
+#### Detalle de juego (`/games/<slug>/`)
+- **Juego existente**: muestra imagen, descripción, desarrollador, categoría, precio y botón "Agregar al carrito".
+- **Sin sesión**: el botón muestra "Iniciar sesión para comprar".
+- **Juego inexistente**: responde 404.
+
+#### Carrito (`/cart/`)
+- **Con ítems**: muestra lista de juegos con precios, total y botón "Continuar al pago".
+- **Vacío**: muestra mensaje y enlace a la tienda.
+- **Agregar juego ya en carrito**: mensaje informativo, no duplica.
+- **Agregar juego ya en biblioteca**: mensaje de advertencia, no agrega.
+
+#### Checkout (`/payments/checkout/`)
+- **Saldo suficiente**: muestra total, saldo disponible y botón "Confirmar Compra" activo.
+- **Saldo insuficiente**: muestra la diferencia y botón deshabilitado.
+- **Carrito vacío**: redirige al catálogo.
+
+#### Confirmación de pago (`/payments/confirm/`)
+- **Pago exitoso**: descuenta saldo, crea la orden, agrega juegos a la biblioteca, vacía el carrito y redirige a `/library/`.
+- **Saldo insuficiente (validación server-side)**: rechaza la operación sin modificar el saldo.
+
+#### Biblioteca (`/library/`)
+- **Con juegos comprados**: muestra grilla con los juegos adquiridos y badge "Comprado".
+- **Sin juegos**: muestra mensaje y enlace a la tienda.
+- **Sin autenticación**: redirige al login.
 
 #### Registro (`/users/register/`)
-- **Registro exitoso**: completar todos los campos con datos válidos → redirige al catálogo y queda logueado automáticamente.
-- **Contraseñas no coinciden**: `password1` ≠ `password2` → permanece en el formulario con mensaje de error.
-- **Usuario duplicado**: intentar registrar un `username` ya existente → error en el formulario.
+- **Registro exitoso**: redirige al catálogo y queda logueado automáticamente.
+- **Contraseñas no coinciden**: permanece en el formulario con mensaje de error.
+- **Usuario duplicado**: error en el formulario.
 - **Nuevo usuario tiene saldo 0**: verificable desde Admin → Usuarios.
 
 #### Login (`/users/login/`)
-- **Login exitoso**: credenciales correctas → redirige al catálogo (`/games/`).
+- **Login exitoso**: credenciales correctas → redirige al catálogo.
 - **Contraseña incorrecta**: permanece en la página de login.
-- **Usuario inexistente**: permanece en la página de login.
-- **Ya autenticado**: acceder a `/users/login/` estando logueado → redirige al catálogo.
+- **Ya autenticado**: redirige al catálogo.
 
 #### Perfil (`/users/profile/`)
-- **Sin autenticación**: acceder sin estar logueado → redirige a `/users/login/?next=/users/profile/`.
-- **Con autenticación**: muestra nombre de usuario y saldo con formato local (`75,50` en lugar de `75.50`).
+- **Sin autenticación**: redirige a `/users/login/?next=/users/profile/`.
+- **Con autenticación**: muestra nombre de usuario y saldo con formato local (`75,50`).
 
 #### Logout (`/users/logout/`)
 - Cerrar sesión → redirige a `/users/login/`.
-- Intentar acceder a `/users/profile/` después → redirige al login.
 
 ---
 

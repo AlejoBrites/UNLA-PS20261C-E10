@@ -33,21 +33,30 @@ Una User Story se considera **terminada** cuando cumple **todos** estos criterio
 | US03  | Creación de contraseña                       | users       | Alta      | 2           | Sprint 1 | ✅ Done     |
 | US04  | Inicio de sesión                             | users       | Alta      | 3           | Sprint 1 | ✅ Done     |
 | US05  | Gestión de sesión (mantener sesión iniciada) | users       | Alta      | 2           | Sprint 1 | ✅ Done     |
-| US06  | Landing page y catálogo básico               | users/games | Alta      | 5           | Sprint 2 | ✅ Done     |
-| US07  | Exploración de listado de juegos             | games       | Alta      | 5           | Sprint 2 | 🔄 To Do    |
+| US06  | Landing page y catálogo básico               | users/games | Alta      | 5           | Sprint 1 | ✅ Done     |
+| US07  | Exploración de listado de juegos             | games       | Alta      | 5           | Sprint 2 | ✅ Done     |
 | US08  | Búsqueda de juegos por nombre                | games       | Media     | 3           | Sprint 3 | 🔄 To Do    |
-| US09  | Visualización de detalles del juego          | games       | Media     | 3           | Sprint 2 | 🔄 To Do    | 
+| US09  | Visualización de detalles del juego          | games       | Media     | 3           | Sprint 2 | ✅ Done     |
 | US10  | Filtrado por categoría/género                | games       | Media     | 5           | Sprint 3 | 🔄 To Do    |
 | US11  | Agregar juego al carrito                     | cart        | Alta      | 2           | Sprint 2 | ✅ Done     |
 | US12  | Visualizar carrito                           | cart        | Alta      | 3           | Sprint 2 | ✅ Done     |
 | US13  | Eliminar juego del carrito                   | cart        | Media     | 2           | Sprint 2 | ✅ Done     |
 | US14  | Seleccionar método de pago                   | payments    | Alta      | 3           | Sprint 2 | ✅ Done     |
 | US15  | Confirmar compra                             | payments    | Alta      | 5           | Sprint 2 | ✅ Done     |
-| US16  | Visualizar biblioteca de juegos              | library     | Media     | 2           | Sprint 2 | 🔄 To Do    |
-| US17  | Descargar juego                              | library     | Media     | 3           | Sprint 4 | 🔄 To Do    |
-| US18  | Instalar juego                               | library     | Media     | 3           | Sprint 4 | 🔄 To Do    |
-| US19  | Actualizar juego                             | library     | Baja      | 2           | Sprint 4 | 🔄 To Do    |
+| US16  | Visualizar biblioteca de juegos              | library     | Media     | 2           | Sprint 2 | ✅ Done     |
+| US17  | Descargar juego                              | library     | Media     | 3           | Sprint 3 | 🔄 To Do    |
+| US18  | Instalar juego                               | library     | Media     | 3           | Sprint 3 | 🔄 To Do    |
+| US19  | Actualizar juego                             | library     | Baja      | 2           | Sprint 3 | 🔄 To Do    |
 
+---
+
+## Resumen por sprint
+
+| Sprint   | US incluidas                          | Story Points | Estado           |
+|----------|---------------------------------------|-------------|------------------|
+| Sprint 1 | US01–US06                             | 20 SP       | ✅ Completado    |
+| Sprint 2 | US07, US09, US11–US16                 | 25 SP       | ✅ Completado    |
+| Sprint 3 | US08, US10, US17–US19                 | 16 SP       | 🔄 Pendiente     |
 
 ---
 
